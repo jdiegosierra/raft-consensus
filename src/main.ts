@@ -22,20 +22,20 @@ interface IRaftService {
   // logger.info('Current environment: ' + process.env.NODE_ENV || "development");
   const app = await NestFactory.create(AppModule);
   // TODO: Build from FactoryServices
-  app.connectMicroservice(tcpOptions);
+  // app.connectMicroservice(tcpOptions);
   app.connectMicroservice(raftOptions);
   await app.startAllMicroservicesAsync();
   // TODO: Bug with port. App overwrites TCPOptions
   await app.listen(config.server['PORT'], () => {
     console.log(`Application is running on: ${config.server['PORT']}`);
-    const client: ClientGrpc = new ClientGrpcProxy({
-        package: 'raft',
-        protoPath: './src/transport-layers/rpc/raft.proto',
-        url: 'localhost: 8000',
-      });
-    const raftClient: IRaftService = client.getService<IRaftService>('RaftService');
-    const test = new RaftService(raftClient);
-    test._sendHeartbeat();
+    // const client: ClientGrpc = new ClientGrpcProxy({
+    //     package: 'raft',
+    //     protoPath: './src/transport-layers/rpc/raft.proto',
+    //     url: 'localhost: 8000',
+    //   });
+    // const raftClient: IRaftService = client.getService<IRaftService>('RaftService');
+    // const raft = new RaftService(raftClient);
+    // raft.start();
   }
   );
 }

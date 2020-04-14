@@ -8,12 +8,17 @@ export interface RaftRequest {
   message: [string, (string | Int8Array)];
 }
 
-// export interface RaftResponse {
-//   message: handle;
-// }
+export interface RaftResponse {
+  message: boolean;
+}
 
-interface IRaftService {
-  leaderRequest(message: RaftRequest): Observable<any>;
+class IRaftService {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  voteRequest(message: RaftRequest): Observable<any>;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  heartbeat(): void;
 }
 
 @Controller('raft')
@@ -21,21 +26,22 @@ export class RaftController implements OnModuleInit {
   @Client(raftOptions)
   private client: ClientGrpc;
   private raftClient: IRaftService;
+  private rpcClients: Array<[string, IRaftService]>;
+  private _raftService: RaftService;
 
   onModuleInit() {
     this.raftClient = this.client.getService<IRaftService>('RaftService');
-  }
-  @GrpcMethod('RaftService')
-  leaderRequest(message: RaftRequest): any {
-    const raftService = new RaftService(this.raftClient);
-    return {message: raftService.handleRaftMessage(message.message).toString()};
+    this._raftService = new RaftService(this.rpcClients);
+    this._raftService.start();
   }
 
-  // @Get()
-  // sendRequest(): string {
-  //   this.raftClient.leaderRequest({message: "I want to be the leader"}).subscribe(response => {
-  //     console.log(response.message);
-  //   });
-  //   return "You are the leader";
-  // }
+  @GrpcMethod('RaftService')
+  voteRequest(): RaftResponse {
+    return {message: this._raftService.handleVoteRequest()};
+  }
+
+  @GrpcMethod('RaftService')
+  heartbeat(): void {
+    this._raftService.handleHeartbeat();
+  }
 }
