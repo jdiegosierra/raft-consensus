@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package raft;
+
+service RaftService {
+  rpc LeaderRequest(RaftRequest) returns (RaftResponse) {}
+}
+
+message RaftRequest {
+  string message = 1;
+}
+
+message RaftResponse {
+  string message = 1;
+}
