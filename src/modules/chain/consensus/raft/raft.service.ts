@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 // import { Reseteable, Timer } from './timer';
-// import config from '../../../../config/default';
-const config = {server: "hola"};
+import config from '../../../../config/default';
 // import { Observable } from 'rxjs';
 // import { RaftRequest } from './raft.controller';
 // import { RaftController } from './raft.controller';
@@ -84,6 +83,7 @@ export class RaftService {
   private _heartbeatInterval: Reseteable;
 
   constructor (private _clients: Array<[string, IRaftService]>) {
+    // console.log(this._clients);
     // console.log('constructor');
     // private _timerFactory: ITimerFactory,
     this._resetRaftState();
@@ -91,12 +91,13 @@ export class RaftService {
   }
 
   start(): void {
-    this._state = ServiceState.ON;
-    this._startStatus();
+    // this._state = ServiceState.ON;
+    // this._startStatus();
+    console.log(this._clients);
   }
 
   private _resetRaftState(): void {
-    console.log('_resetRaftState');
+    // console.log('_resetRaftState');
     // Sets the initial status to the service.
     this._raftStatus = RaftStatus.FOLLOWER;
     this._state = ServiceState.OFF;
@@ -108,7 +109,7 @@ export class RaftService {
   }
 
   private static _getRandomElectionTimeout(): number {
-    console.log('_getRandomElectionTimeout');
+    // console.log('_getRandomElectionTimeout');
     //   """Renews the timeout.
     //
     // Returns:
@@ -118,34 +119,42 @@ export class RaftService {
   }
 
   private _startStatus(): void {
-    console.log('_startStatus');
+    // console.log('_startStatus');
+    // // console.log(this._state);
+    // console.log("vote " + this._raftStatus);
+    // console.log("vita " + RaftStatus.CANDIDATE);
     // Starts the timers according to the current status.
     if (this._state === ServiceState.OFF)
       return;
-    switch (this._raftStatus) {
+    switch (+this._raftStatus) {
       case RaftStatus.FOLLOWER:
+        // console.log("entra aqui 1");
         this._startFollowerStatus();
         break;
       case RaftStatus.CANDIDATE:
+        // console.log("entra aqui 2");
         this._startCandidateStatus();
         break;
       case RaftStatus.LEADER:
+        // console.log("entra aqui 3");
         this._startLeaderStatus();
         break;
       default:
+        console.log('default');
         break;
     }
   }
 
   private _startFollowerStatus(): void {
-    // console.log('_startFollowerStatus');
-    this._candidateTimer = new Reseteable(this._setRaftStatus, RaftService._getRandomElectionTimeout(), [RaftStatus.CANDIDATE]);
+    console.log('_startFollowerStatus');
+    console.log(RaftService._getRandomElectionTimeout());
+    this._candidateTimer = new Reseteable(this._setRaftStatus.bind(this), RaftService._getRandomElectionTimeout(), [RaftStatus.CANDIDATE]);
   }
 
   private _startCandidateStatus(): void {
     // console.log('_startCandidateStatus');
     this._votingTo = this._validatorId;
-    this._electionFailedTimer = new Reseteable(this._setRaftStatus, RaftService._getRandomElectionTimeout(), [RaftStatus.FOLLOWER]);
+    this._electionFailedTimer = new Reseteable(this._setRaftStatus.bind(this), RaftService._getRandomElectionTimeout(), [RaftStatus.FOLLOWER]);
     if (this._voteRequest())
       this._setRaftStatus(RaftStatus.LEADER);
     else
@@ -158,11 +167,11 @@ export class RaftService {
     this._votingTo = null;
     this._stepDownCounter = 0;
     this._leader = this._validatorId;
-    this._heartbeatInterval = new Reseteable(this._sendHeartbeat, config.server['RAFT']['HEARTBEAT_INTERVAL'], []);
+    this._heartbeatInterval = new Reseteable(this._sendHeartbeat.bind(this), config.server['RAFT']['HEARTBEAT_INTERVAL'], []);
   }
 
   private _endStatus(): void {
-    console.log('_endStatus');
+    // console.log('_endStatus');
     // """Stops the timers according to the status."""
     switch (this._raftStatus) {
       case RaftStatus.FOLLOWER:
@@ -181,7 +190,7 @@ export class RaftService {
   }
 
   private _setRaftStatus(status: RaftStatus): void {
-    // console.log('_setRaftStatus');
+    console.log('_setRaftStatus');
     // """Sets this to a given status.
     //
     // Args:

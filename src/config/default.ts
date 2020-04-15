@@ -1,4 +1,6 @@
 import { config } from "dotenv"
+import settings from './settings';
+import { Transport } from '@nestjs/microservices';
 
 interface IData {
   [key: string]: any;
@@ -15,42 +17,47 @@ const server: IData = {
     HOST: '0.0.0.0',
     PORT: 3001,
     HTTPS: false,
-    RAFT: {
-      START_TIME_ELECTION: 1,
-      END_TIME_ELECTION: 3,
-      HEARTBEAT_INTERVAL: 1,
-      TOLERANCE: 0.6,
-      RAFT_MIN_NODES: 3
-    }
+    RAFT_CLIENTS: [
+      {
+      transport: Transport.GRPC,
+      options: {
+        package: 'raft',
+        protoPath: './src/transport-layers/rpc/raft.proto',
+        url: 'localhost: 8000',
+      }
+    },
+      {
+        transport: Transport.GRPC,
+        options: {
+          package: 'raft',
+          protoPath: './src/transport-layers/rpc/raft.proto',
+          url: 'localhost: 8001',
+        }
+      },
+      {
+        transport: Transport.GRPC,
+        options: {
+          package: 'raft',
+          protoPath: './src/transport-layers/rpc/raft.proto',
+          url: 'localhost: 8002',
+        }
+      }]
   },
   test: {
     HOST: '0.0.0.0',
     PORT: 3001,
     HTTPS: true,
-    RAFT: {
-      START_TIME_ELECTION: 1,
-      END_TIME_ELECTION: 3,
-      HEARTBEAT_INTERVAL: 1,
-      TOLERANCE: 0.6,
-      RAFT_MIN_NODES: 3
-    }
   },
   production: {
     HOST: '0.0.0.0',
     PORT: 3001,
     HTTPS: true,
-    RAFT: {
-      START_TIME_ELECTION: 1,
-      END_TIME_ELECTION: 3,
-      HEARTBEAT_INTERVAL: 1,
-      TOLERANCE: 0.6,
-      RAFT_MIN_NODES: 3
-    }
   }
 };
 
 export default {
   ...defaultConfig,
+  ...settings,
   ...{
     server: server[process.env.NODE_ENV || 'development']
   }

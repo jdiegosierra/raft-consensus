@@ -25,13 +25,14 @@ class IRaftService {
 export class RaftController implements OnModuleInit {
   @Client(raftOptions)
   private client: ClientGrpc;
-  private raftClient: IRaftService;
-  private rpcClients: Array<[string, IRaftService]>;
-  private _raftService: RaftService;
+  // private raftClient: IRaftService;
+  // private rpcClients: Array<[string, IRaftService]>;
+
+  constructor(private _raftService: RaftService) {
+    // _raftService.start();
+  }
 
   onModuleInit() {
-    this.raftClient = this.client.getService<IRaftService>('RaftService');
-    this._raftService = new RaftService(this.rpcClients);
     this._raftService.start();
   }
 
