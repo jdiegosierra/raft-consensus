@@ -20,6 +20,5 @@ import { raftOptions } from './config/transportOptions';
   // TODO: Bug with port. App overwrites TCPOptions
   await app.listen(config.server['PORT'], () => {
     console.log(`Application is running on: ${config.server['PORT']}`);
-    console.log(config);
   });
 })();

@@ -93,7 +93,7 @@ export class RaftService {
   start(): void {
     // this._state = ServiceState.ON;
     // this._startStatus();
-    console.log(this._clients);
+    // console.log(this._clients);
   }
 
   private _resetRaftState(): void {
