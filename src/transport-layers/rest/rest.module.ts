@@ -31,6 +31,6 @@ import { RaftModule } from '../../modules/chain/consensus/raft/raft.module';
 import { PingModule } from '../../modules/ping/ping.module';
 
 @Module({
-    imports: [PingModule, RaftModule],
+    imports: [PingModule],
 })
 export class RestModule {}

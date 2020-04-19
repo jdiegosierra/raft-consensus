@@ -45,6 +45,9 @@ export class IRaftService {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   heartbeat(): void;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  ping(algo: any): Observable<any>;
 }
 
 enum ServiceState {
@@ -116,6 +119,13 @@ export class RaftService {
     //   timeout: Random interval to perform leader election.
     // """
     return Math.floor(Math.random() * config.server['RAFT']['END_TIME_ELECTION']) + 1;
+  }
+
+  ping(): boolean {
+    console.log('bitvch');
+    console.log("se va a ahcer la llamada rpc al puerto" + process.env.GRPC_CLIENT);
+    this._clients[0][1].ping({}).subscribe(value => console.log(value));
+    return true
   }
 
   private _startStatus(): void {

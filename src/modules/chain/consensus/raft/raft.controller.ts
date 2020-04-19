@@ -37,6 +37,12 @@ export class RaftController implements OnModuleInit {
   }
 
   @GrpcMethod('RaftService')
+  ping(): RaftResponse {
+    console.log("se ha recibido una llamada RPC");
+    return {message: true};
+  }
+
+  @GrpcMethod('RaftService')
   voteRequest(): RaftResponse {
     return {message: this._raftService.handleVoteRequest()};
   }

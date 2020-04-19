@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Inject, Module } from '@nestjs/common';
 import { RaftController } from './raft.controller';
 import { IRaftService, RaftService } from './raft.service';
 import config from './../../../../config/default';
@@ -13,7 +13,9 @@ const connectionFactory = {
       const client: ClientGrpc = new ClientGrpcProxy(options);
       rpcClients.push([index.toString(), client.getService<IRaftService>('RaftService')]);
     });
-    return new RaftService(rpcClients);
+    const raft =  new RaftService(rpcClients);
+    console.log(raft.ping());
+    return raft;
   }
 };
 

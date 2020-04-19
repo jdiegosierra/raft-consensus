@@ -3,6 +3,7 @@ syntax = "proto3";
 package raft;
 
 service RaftService {
+  rpc Ping(Empty) returns (RaftResponse) {}
   rpc VoteRequest(RaftRequest) returns (RaftResponse) {}
   rpc Heartbeat(Empty) returns (Empty) {}
 }
@@ -15,6 +16,4 @@ message RaftResponse {
   string message = 1;
 }
 
-message Empty {
-
-}
+message Empty {}

@@ -9,17 +9,18 @@ export default {
         {
           package: 'raft',
           protoPath: './src/transport-layers/rpc/raft.proto',
-          url: 'localhost: 8000',
+          url: '127.0.0.1:' + process.env.GRPC_CLIENT,
         },
-        {
-          package: 'raft',
-          protoPath: './src/transport-layers/rpc/raft.proto',
-          url: 'localhost: 8001',
-        },
-        {
-          package: 'raft',
-          protoPath: './src/transport-layers/rpc/raft.proto',
-          url: 'localhost: 8002',
-        }]
+        // {
+        //   package: 'raft',
+        //   protoPath: './src/transport-layers/rpc/raft.proto',
+        //   url: 'localhost: 8001',
+        // },
+        // {
+        //   package: 'raft',
+        //   protoPath: './src/transport-layers/rpc/raft.proto',
+        //   url: 'localhost: 8002',
+        // }
+        ]
     }
 };

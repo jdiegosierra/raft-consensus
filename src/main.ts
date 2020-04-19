@@ -10,6 +10,8 @@ import { raftOptions } from './config/transportOptions';
 // import { logger } from '@utils/logger';
 
 (async () => {
+  console.log("node es")
+  console.log(process.env.GRPC_PORT)
   // logger.info('API server made by J. Diego Sierra');
   // logger.info('Current environment: ' + process.env.NODE_ENV || "development");
   const app = await NestFactory.create(AppModule);
@@ -19,6 +21,7 @@ import { raftOptions } from './config/transportOptions';
   await app.startAllMicroservicesAsync();
   // TODO: Bug with port. App overwrites TCPOptions
   await app.listen(config.server['PORT'], () => {
+    console.log(config.server['PORT']);
     console.log(`Application is running on: ${config.server['PORT']}`);
   });
 })();

@@ -3,6 +3,6 @@ import { RpcModule } from './transport-layers/rpc/rpc.module';
 import { RestModule } from "./transport-layers/rest/rest.module";
 
 @Module({
-  imports: [RpcModule]
+  imports: [RestModule, RpcModule]
 })
 export class AppModule {}
