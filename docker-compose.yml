@@ -9,9 +9,10 @@ services:
       - NODE_ENV=development
       - GRPC_PORT=8000
       - GRPC_CLIENT=8001
-
     volumes:
       - .:/usr/src/app
+    ports:
+      - 8000:8000
   nodo2:
     build:
       context: .
@@ -22,6 +23,8 @@ services:
       - GRPC_CLIENT=8002
     volumes:
       - .:/usr/src/app
+    ports:
+      - 8001:8001
   nodo3:
     build:
       context: .
@@ -32,4 +35,5 @@ services:
       - GRPC_CLIENT=8000
     volumes:
       - .:/usr/src/app
-
+    ports:
+      - 8002:8002

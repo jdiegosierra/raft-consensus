@@ -6,7 +6,7 @@ export const raftOptions: ClientOptions = {
     options: {
         package: 'raft',
         protoPath: './src/transport-layers/rpc/raft.proto',
-        url: '0.0.0.0:8000',
+        url: '127.0.0.1:' + process.env.GRPC_CLIENT,
     }
 };
 

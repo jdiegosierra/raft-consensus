@@ -10,7 +10,7 @@ import { raftOptions } from './config/transportOptions';
 // import { logger } from '@utils/logger';
 
 (async () => {
-  console.log("node es")
+  console.log(config)
   console.log(process.env.GRPC_PORT)
   // logger.info('API server made by J. Diego Sierra');
   // logger.info('Current environment: ' + process.env.NODE_ENV || "development");

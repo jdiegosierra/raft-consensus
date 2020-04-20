@@ -16,7 +16,7 @@ EXPOSE ${GRPC_PORT}
 
 # Bundle app source
 COPY . .
-#RUN npm install grpc
+RUN npm install grpc
 CMD [ "npm", "start" ]
 
 # TODO: HACER UN VOLUME PARA LA CARPTECA DE DOCS

@@ -14,7 +14,7 @@ const connectionFactory = {
       rpcClients.push([index.toString(), client.getService<IRaftService>('RaftService')]);
     });
     const raft =  new RaftService(rpcClients);
-    console.log(raft.ping());
+    raft.start();
     return raft;
   }
 };
