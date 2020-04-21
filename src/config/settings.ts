@@ -9,7 +9,7 @@ export default {
         {
           package: 'raft',
           protoPath: './src/transport-layers/rpc/raft.proto',
-          url: '0.0.0.0:' + process.env.GRPC_CLIENT,
+          url: '0.0.0.0:' + (process.env.GRPC_CLIENT || 8000),
         },
         // {
         //   package: 'raft',

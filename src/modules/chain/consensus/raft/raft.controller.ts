@@ -33,7 +33,7 @@ export class RaftController implements OnModuleInit {
   }
 
   onModuleInit() {
-    this._raftService.start();
+    // this._raftService.start();
   }
 
   @GrpcMethod('RaftService')
