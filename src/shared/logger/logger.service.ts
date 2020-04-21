@@ -1,6 +1,5 @@
 import { Injectable, Scope, Logger } from '@nestjs/common';
 import * as winston from 'winston';
-import { logger } from '../../utils/logger';
 import * as moment from 'moment';
 
 @Injectable({ scope: Scope.TRANSIENT })

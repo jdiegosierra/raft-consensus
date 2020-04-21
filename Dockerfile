@@ -1,7 +1,7 @@
 FROM node:12-alpine
 
 # Create app directory
-#WORKDIR /usr/src
+WORKDIR /usr/nodo
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -15,9 +15,12 @@ EXPOSE ${GRPC_PORT}
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY . .
+#COPY . .
+#RUN mkdir ./logss
+#RUN touch ./logss/debug.log
+RUN ls
 RUN npm install grpc
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start:dev" ]
 
 # TODO: HACER UN VOLUME PARA LA CARPTECA DE DOCS
 

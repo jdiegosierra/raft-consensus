@@ -10,7 +10,8 @@ services:
       - GRPC_PORT=8000
       - GRPC_CLIENT=8001
     volumes:
-      - .:/usr/src/app
+      - .:/usr/nodo
+      - ./logs/test1.log:/usr/nodo/logs/debug.log
     ports:
       - 8000:8000
     logging:
@@ -27,7 +28,8 @@ services:
       - GRPC_PORT=8001
       - GRPC_CLIENT=8002
     volumes:
-      - .:/usr/src/app
+      - .:/usr/nodo
+      - ./logs/test2.log:/usr/nodo/logs/debug.log
     ports:
       - 8001:8001
     logging:
@@ -44,7 +46,8 @@ services:
       - GRPC_PORT=8002
       - GRPC_CLIENT=8000
     volumes:
-      - .:/usr/src/app
+      - .:/usr/nodo
+      - ./logs/test3.log:/usr/nodo/logs/debug.log
     ports:
       - 8002:8002
     logging:
