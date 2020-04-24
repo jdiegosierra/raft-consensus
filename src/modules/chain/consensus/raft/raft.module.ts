@@ -3,17 +3,20 @@ import { RaftController } from './raft.controller';
 import { IRaftService, RaftService } from './raft.service';
 import config from './../../../../config/default';
 import { ClientGrpc, ClientGrpcProxy, ClientsModule, Transport } from '@nestjs/microservices';
+import { LoggerService } from '../../../../shared/logger/logger.service';
 
 const connectionFactory = {
   provide: 'RaftService',
   useFactory: () => {
     const rpcClients: Array<[string, IRaftService]> = [];
-    config.raft.RAFT_CLIENTS.forEach((options, index) =>
+    config.raft.RAFT_CLIENTS.forEach(options =>
     {
-      const client: ClientGrpc = new ClientGrpcProxy(options);
-      rpcClients.push([index.toString(), client.getService<IRaftService>('RaftService')]);
+      const client: ClientGrpc = new ClientGrpcProxy(options.options);
+      rpcClients.push([options.id, client.getService<IRaftService>('RaftService')]);
     });
-    const raft =  new RaftService(rpcClients);
+    const loggerService = new LoggerService();
+    loggerService.setContext('RAFT');
+    const raft =  new RaftService(loggerService.logger, rpcClients);
     raft.start();
     return raft;
   }

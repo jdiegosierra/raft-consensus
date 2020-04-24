@@ -43,8 +43,8 @@ export class RaftController implements OnModuleInit {
   }
 
   @GrpcMethod('RaftService')
-  voteRequest(): RaftResponse {
-    return {message: this._raftService.handleVoteRequest()};
+  voteRequest(message: RaftRequest): RaftResponse {
+    return {message: this._raftService.handleVoteRequest(message)};
   }
 
   @GrpcMethod('RaftService')

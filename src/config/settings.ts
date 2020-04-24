@@ -7,20 +7,32 @@ export default {
       RAFT_MIN_NODES: 3,
       RAFT_CLIENTS: [
         {
-          package: 'raft',
-          protoPath: './src/transport-layers/rpc/raft.proto',
-          url: '0.0.0.0:' + (process.env.GRPC_CLIENT || 8000),
+          id: "8000",
+          options:
+            {
+              package: 'raft',
+              protoPath: './src/transport-layers/rpc/raft.proto',
+              url: '0.0.0.0:' +  8000,
+            }
         },
-        // {
-        //   package: 'raft',
-        //   protoPath: './src/transport-layers/rpc/raft.proto',
-        //   url: 'localhost: 8001',
-        // },
-        // {
-        //   package: 'raft',
-        //   protoPath: './src/transport-layers/rpc/raft.proto',
-        //   url: 'localhost: 8002',
-        // }
+        {
+          id: "8001",
+          options:
+            {
+              package: 'raft',
+              protoPath: './src/transport-layers/rpc/raft.proto',
+              url: '0.0.0.0:' + 8001,
+            }
+        },
+        {
+          id: "8002",
+          options:
+            {
+              package: 'raft',
+              protoPath: './src/transport-layers/rpc/raft.proto',
+              url: '0.0.0.0:' + 8002,
+            }
+        }
         ]
     }
 };

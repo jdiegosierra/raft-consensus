@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 // import { Reseteable, Timer } from './timer';
 import config from '../../../../config/default';
+import * as winston from 'winston';
 // import { Observable } from 'rxjs';
 // import { RaftRequest } from './raft.controller';
 // import { RaftController } from './raft.controller';
@@ -89,18 +90,16 @@ export class RaftService {
   private _electionFailedTimer: Reseteable;
   private _heartbeatInterval: Reseteable;
 
-  constructor (private _clients: Array<[string, IRaftService]>) {
-    // console.log(this._clients);
-    // console.log('constructor');
-    // private _timerFactory: ITimerFactory,
+  constructor (private logger: winston.Logger, private _clients: Array<[string, IRaftService]>) {
     this._resetRaftState();
-    // this._sendHeartbeat();
+    this.logger.info('SENDING HEARBEAT');
+    this._sendHeartbeat();
   }
 
   start(): void {
+    // this.pingRequest();
     // this._state = ServiceState.ON;
     // this._startStatus();
-    // console.log(this._clients);
   }
 
   private _resetRaftState(): void {
@@ -116,18 +115,28 @@ export class RaftService {
   }
 
   private static _getRandomElectionTimeout(): number {
-    // console.log('_getRandomElectionTimeout');
-    //   """Renews the timeout.
-    //
-    // Returns:
-    //   timeout: Random interval to perform leader election.
-    // """
+    /**
+     * Returns the average of two numbers.
+     *
+     * @remarks
+     * This method is part of the {@link core-library#Statistics | Statistics subsystem}.
+     *
+     * @param x - The first input number
+     * @param y - The second input number
+     * @returns The arithmetic mean of `x` and `y`
+     *
+     * @beta
+     */
     return (Math.floor(Math.random() * config.raft.END_TIME_ELECTION) + 1)*1000;
   }
 
-  async ping(): Promise<boolean> {
-    console.log("se va a ahcer la llamada rpc al puerto" + (process.env.GRPC_CLIENT || 8000));
-    this._clients[0][1].ping({}).subscribe(value => console.log(value));
+  pingRequest(): void {
+    this._clients.forEach(client => {
+      client[1].ping({}).subscribe(value => this.logger.info('Ping to port ' + client[0] + ': ' + value));
+    })
+  }
+
+  ping(): boolean {
     return true
   }
 
@@ -238,11 +247,9 @@ export class RaftService {
       if (this._validatorId === id)
         return;
       // TODO: Async
-      try {
-        response = client.voteRequest(message).subscribe(value => {console.log('recibido vote request de vuelta ' + value)});
-      } catch (e) {
-        
-      }
+      response = client.voteRequest(message).subscribe(
+        value => this.logger.info(JSON.stringify(value)),
+        error => this.logger.error(error));
       total += 1 ? response : 0;
       if (total >= minN)
         result = true;
@@ -268,13 +275,10 @@ export class RaftService {
       if (this._validatorId === id)
         return;
       // TODO: Async
-      console.log("se va a enviar un heartbeat a " + (process.env.GRPC_CLIENT || 8000));
-      try {
-        client.heartbeat({}).subscribe(value => console.log('recibido heartbeat de vuelta del puerto ' + (process.env.GRPC_CLIENT || 8000)));
-      } catch (e) {
-        
-      }
-
+      this.logger.info("se va a enviar un heartbeat a " + (process.env.GRPC_CLIENT || 8000));
+      client.heartbeat({}).subscribe(
+        value => this.logger.info(JSON.stringify(value)),
+        error => this.logger.error(error));
     });
   }
 
@@ -282,14 +286,10 @@ export class RaftService {
     // """Requests the vote to the rest of validator nodes to become
     // leader."""
     // const message = ConsensusLeaderRequest(ConsensusLeaderRequest.Type.VOTE_REQUEST);
-    const message: RaftRequest = {message: ['1', 'votemee']};
+    const message: RaftRequest = {message: ['sender', process.env.GRPC_PORT]};
     const minVotes = Math.floor(this._clients.length * config.raft.TOLERANCE);
-    console.log('se va enviar un mensaje a ' + (process.env.GRPC_CLIENT || 8000));
-    try {
-      this._sendVoteRequest(message, Math.max(minVotes, config.raft.RAFT_MIN_NODES));
-    } catch (e) {
-      console.log('ERROOOOOOOL');
-    }
+    this._sendVoteRequest(message, Math.max(minVotes, config.raft.RAFT_MIN_NODES));
+
     return false
   }
 
@@ -325,7 +325,7 @@ export class RaftService {
   }
 
 
-  handleVoteRequest(): boolean {
+  handleVoteRequest(message: RaftRequest): boolean {
     // """Performs actions according to a received raft message.
     //
     // Args:
@@ -335,41 +335,22 @@ export class RaftService {
     // Whether the answer is positive or negative to a heartbeat / vote
     // request.
     // """
-    console.log("ha llegado un mensaje");
     // If is not running or is not validator
-    // if (this._state != ServiceState.ON || this._validatorId === null)
-    //   return false;
-    //
-    // const reqType: ReqType = message['type'];
-    // const sender = this._validatorPeerHashes[message['sender']];
-    //
-    // if (reqType === ReqType.VOTE_REQUEST) {
-    //   if (this._raftStatus === RaftStatus.CANDIDATE || this._votingTo != null)
-    //     return false;
-    //
-    //   this._votingTo = sender;
-    //
-    //   if (this._raftStatus === RaftStatus.FOLLOWER)
-    //     this._candidateTimer.cancel();
-    //   else
-    //     this._setRaftStatus(RaftStatus.FOLLOWER);
-    //
-    //   return true;
-    //
-    // } else if (reqType === ReqType.HEARTBEAT) {
-    //   this._votingTo = null;
-    //   this._leader = sender;
-    //
-    //   if (this._raftStatus === RaftStatus.FOLLOWER)
-    //     this._candidateTimer.setTimer();
-    //   else
-    //     this._setRaftStatus(RaftStatus.FOLLOWER);
-    //   return true;
-    // }
-    return false;
+    if (this._state != ServiceState.ON || this._validatorId === null)
+      return false;
+
+    if (this._raftStatus === RaftStatus.CANDIDATE || this._votingTo != null)
+      return false;
+
+    this._votingTo = message[0];
+
+    if (this._raftStatus === RaftStatus.FOLLOWER)
+      this._candidateTimer.cancel();
+    else
+      this._setRaftStatus(RaftStatus.FOLLOWER);
   }
 
-  handleHeartbeat(): boolean {
+  handleHeartbeat(): void {
     // """Performs actions according to a received raft message.
     //
     // Args:
@@ -379,37 +360,9 @@ export class RaftService {
     // Whether the answer is positive or negative to a heartbeat / vote
     // request.
     // """
-    console.log("ha llegado un heartbeat");
     // If is not running or is not validator
-    // if (this._state != ServiceState.ON || this._validatorId === null)
-    //   return false;
-    //
-    // const reqType: ReqType = message['type'];
-    // const sender = this._validatorPeerHashes[message['sender']];
-    //
-    // if (reqType === ReqType.VOTE_REQUEST) {
-    //   if (this._raftStatus === RaftStatus.CANDIDATE || this._votingTo != null)
-    //     return false;
-    //
-    //   this._votingTo = sender;
-    //
-    //   if (this._raftStatus === RaftStatus.FOLLOWER)
-    //     this._candidateTimer.cancel();
-    //   else
-    //     this._setRaftStatus(RaftStatus.FOLLOWER);
-    //
-    //   return true;
-    //
-    // } else if (reqType === ReqType.HEARTBEAT) {
-    //   this._votingTo = null;
-    //   this._leader = sender;
-    //
-    //   if (this._raftStatus === RaftStatus.FOLLOWER)
-    //     this._candidateTimer.setTimer();
-    //   else
-    //     this._setRaftStatus(RaftStatus.FOLLOWER);
-    //   return true;
-    // }
-    return false;
+    this.logger.info('Received heartbeat');
+    if (this._state != ServiceState.ON || this._validatorId === null)
+    this._candidateTimer.setTimer();
   }
 }
