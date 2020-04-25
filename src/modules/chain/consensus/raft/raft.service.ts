@@ -89,11 +89,12 @@ export class RaftService {
   private _candidateTimer: Reseteable;
   private _electionFailedTimer: Reseteable;
   private _heartbeatInterval: Reseteable;
+  private _pingInterval: Reseteable;
 
   constructor (private logger: winston.Logger, private _clients: Array<[string, IRaftService]>) {
     this._resetRaftState();
-    this.logger.info('SENDING HEARBEAT');
-    this._sendHeartbeat();
+    this._pingInterval = new Reseteable(this.pingRequest.bind(this), 2000);
+
   }
 
   start(): void {
@@ -132,11 +133,17 @@ export class RaftService {
 
   pingRequest(): void {
     this._clients.forEach(client => {
-      client[1].ping({}).subscribe(value => this.logger.info('Ping to port ' + client[0] + ': ' + value));
-    })
+      this.logger.info('Ping to port ' + client[0])
+
+      client[1].ping({}).subscribe(
+        (value) => this.logger.info('Pingged to port ' + client[0] + ': ' + JSON.stringify(value)),
+        (error) => this.logger.error(error.message)
+      )
+    });
   }
 
   ping(): boolean {
+    this.logger.info('Received ping');
     return true
   }
 
@@ -248,8 +255,7 @@ export class RaftService {
         return;
       // TODO: Async
       response = client.voteRequest(message).subscribe(
-        value => this.logger.info(JSON.stringify(value)),
-        error => this.logger.error(error));
+        value => this.logger.info(JSON.stringify(value)));
       total += 1 ? response : 0;
       if (total >= minN)
         result = true;
@@ -277,8 +283,7 @@ export class RaftService {
       // TODO: Async
       this.logger.info("se va a enviar un heartbeat a " + (process.env.GRPC_CLIENT || 8000));
       client.heartbeat({}).subscribe(
-        value => this.logger.info(JSON.stringify(value)),
-        error => this.logger.error(error));
+        value => this.logger.info(JSON.stringify(value)));
     });
   }
 

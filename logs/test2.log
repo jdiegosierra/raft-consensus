@@ -1,153 +1,48 @@
-[[32minfo[39m] [right meow!] 21:21:30:912 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:21:30:914 Current environment: development
-[[32minfo[39m] [right meow!] 21:21:30:914 Application is running on: 3000
-[[32minfo[39m] [right meow!] 21:22:02:352 APIiii server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:22:02:354 Current environment: development
-[[32minfo[39m] [right meow!] 21:22:02:354 Application is running on: 3000
-[[32minfo[39m] [right meow!] 21:22:07:362 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:22:07:364 Current environment: development
-[[32minfo[39m] [right meow!] 21:22:07:365 Application is running on: 3000
-[[32minfo[39m] [right meow!] 21:02:30:138 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:02:30:140 Current environment: development
-[[32minfo[39m] [right meow!] 21:02:30:141 Application is running on: 3000
-[[32minfo[39m] [right meow!] 21:10:16:613 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:10:16:615 Current environment: development
-[[32minfo[39m] [right meow!] 21:10:16:616 Application is running on: 3000
-[[32minfo[39m] [right meow!] 21:11:35:936 RAFT started successfully
-[[32minfo[39m] [right meow!] 21:11:35:954 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:11:35:954 Current environment: development
-[[32minfo[39m] [right meow!] 21:11:35:954 Application is running on: 3000
-[[32minfo[39m] [right meow!] 21:11:41:479 RAFT started successfully
-[[32minfo[39m] [right meow!] 21:11:41:499 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 21:11:41:499 Current environment: development
-[[32minfo[39m] [right meow!] 21:11:41:500 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:09:29:810 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:09:29:831 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:09:29:831 Current environment: development
-[[32minfo[39m] [right meow!] 22:09:29:832 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:11:23:174 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:11:23:196 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:11:23:196 Current environment: development
-[[32minfo[39m] [right meow!] 22:11:23:196 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:13:48:096 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:13:48:117 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:13:48:118 Current environment: development
-[[32minfo[39m] [right meow!] 22:13:48:118 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:14:33:207 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:14:33:233 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:14:33:233 Current environment: development
-[[32minfo[39m] [right meow!] 22:14:33:234 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:15:00:192 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:15:00:212 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:15:00:213 Current environment: development
-[[32minfo[39m] [right meow!] 22:15:00:213 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:15:00:218 recibido heartbeat de vuelta del puerto 8002
-[[32minfo[39m] [right meow!] 22:16:08:322 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:16:08:343 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:16:08:324 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:16:08:343 Current environment: development
-[[32minfo[39m] [right meow!] 22:16:08:344 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:16:08:349 recibido heartbeat de vuelta del puerto 8002
-[[32minfo[39m] [right meow!] 22:16:44:804 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:16:44:826 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:16:44:806 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:16:44:826 Current environment: development
-[[32minfo[39m] [right meow!] 22:16:44:826 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:16:44:830 ha llegado un heartbeat
-[[32minfo[39m] [right meow!] 22:16:44:831 recibido heartbeat de vuelta del puerto 8002
-[[32minfo[39m] [right meow!] 22:22:52:504 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:22:52:525 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:22:52:506 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:22:52:525 Current environment: development
-[[32minfo[39m] [right meow!] 22:22:52:526 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:22:52:530 recibido heartbeat de vuelta del puerto 8002
-[[32minfo[39m] [right meow!] 22:23:23:801 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:23:23:826 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:23:23:803 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:23:23:826 Current environment: development
-[[32minfo[39m] [right meow!] 22:23:23:827 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:23:23:832 Received heartbeat
-[[32minfo[39m] [right meow!] 22:23:23:834 recibido heartbeat de vuelta del puerto 8002
-[[32minfo[39m] [right meow!] 22:24:56:134 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:24:56:156 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:24:56:137 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:24:56:156 Current environment: development
-[[32minfo[39m] [right meow!] 22:24:56:156 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:24:56:160 Received heartbeat
-[[32minfo[39m] [right meow!] 22:24:56:161 Recibido heartbeat [object Object] del puerto 8002
-[[32minfo[39m] [right meow!] 22:25:21:917 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:25:21:939 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:25:21:919 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:25:21:939 Current environment: development
-[[32minfo[39m] [right meow!] 22:25:21:939 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:25:21:943 Received heartbeat
-[[32minfo[39m] [right meow!] 22:25:21:944 Recibido heartbeat undefined del puerto 8002
-[[32minfo[39m] [right meow!] 22:25:38:279 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:25:38:300 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:25:38:281 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:25:38:300 Current environment: development
-[[32minfo[39m] [right meow!] 22:25:38:301 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:25:38:305 Received heartbeat
-[[32minfo[39m] [right meow!] 22:25:38:306 Recibido heartbeat undefined del puerto 8002
-[[32minfo[39m] [right meow!] 22:28:01:799 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:28:01:821 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:28:01:802 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:28:01:821 Current environment: development
-[[32minfo[39m] [right meow!] 22:28:01:821 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:28:01:825 Received heartbeat
-[[32minfo[39m] [right meow!] 22:28:01:826 [object Object]
-[[32minfo[39m] [right meow!] 22:28:16:581 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:28:16:601 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:28:16:583 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:28:16:602 Current environment: development
-[[32minfo[39m] [right meow!] 22:28:16:602 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:28:16:605 Received heartbeat
-[[32minfo[39m] [right meow!] 22:28:16:607 [object Object]
-[[32minfo[39m] [right meow!] 22:28:37:609 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:28:37:629 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:28:37:611 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:28:37:629 Current environment: development
-[[32minfo[39m] [right meow!] 22:28:37:630 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:28:37:633 Received heartbeat
-[[32minfo[39m] [right meow!] 22:28:48:622 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:28:48:644 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:28:48:625 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:28:48:645 Current environment: development
-[[32minfo[39m] [right meow!] 22:28:48:645 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:28:48:649 Received heartbeat
-[[32minfo[39m] [right meow!] 22:28:49:315 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:28:49:335 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:28:49:317 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:28:49:336 Current environment: development
-[[32minfo[39m] [right meow!] 22:28:49:336 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:28:49:339 Received heartbeat
-[[32minfo[39m] [right meow!] 22:29:44:879 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:29:44:904 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:29:44:882 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:29:44:905 Current environment: development
-[[32minfo[39m] [right meow!] 22:29:44:905 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:29:44:910 Received heartbeat
-[[32minfo[39m] [right meow!] 22:30:41:535 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:30:41:558 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:30:41:537 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:30:41:558 Current environment: development
-[[32minfo[39m] [right meow!] 22:30:41:558 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:30:41:562 Received heartbeat
-[[32minfo[39m] [right meow!] 22:32:47:187 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 22:32:47:209 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 22:32:47:189 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 22:32:47:210 Current environment: development
-[[32minfo[39m] [right meow!] 22:32:47:210 Application is running on: 3000
-[[32minfo[39m] [right meow!] 22:32:47:214 Received heartbeat
-[[31merror[39m] [right meow!] 22:32:47:216 undefined
-[[32minfo[39m] [right meow!] 23:26:56:140 SENDING HEARBEAT
-[[32minfo[39m] [right meow!] 23:26:56:164 API server made by J. Diego Sierra
-[[32minfo[39m] [right meow!] 23:26:56:143 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 23:26:56:145 se va a enviar un heartbeat a 8002
-[[32minfo[39m] [right meow!] 23:26:56:145 se va a enviar un heartbeat a 8002
-[[31merror[39m] [right meow!] 23:26:56:168 undefined
-[[31merror[39m] [right meow!] 23:26:56:168 undefined
-[[32minfo[39m] [right meow!] 23:26:56:164 Current environment: development
-[[32minfo[39m] [right meow!] 23:26:56:164 Application is running on: 3000
-[[32minfo[39m] [right meow!] 23:26:56:170 Received heartbeat
-[[31merror[39m] [right meow!] 23:26:56:171 undefined
+[[32minfo[39m] [RAFT] 21:58:42:656 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:58:42:667 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:58:42:688 Received ping
+[[32minfo[39m] [RAFT] 21:58:42:696 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:42:698 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:42:788 Received ping
+[[32minfo[39m] [RAFT] 21:58:46:659 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:58:46:661 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:58:46:667 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:46:669 Received ping
+[[32minfo[39m] [RAFT] 21:58:46:671 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:46:775 Received ping
+[[32minfo[39m] [RAFT] 21:58:50:663 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:58:50:666 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:58:50:671 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:50:674 Received ping
+[[32minfo[39m] [RAFT] 21:58:50:676 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:50:779 Received ping
+[[32minfo[39m] [RAFT] 21:58:54:663 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:58:54:665 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:58:54:670 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:54:672 Received ping
+[[32minfo[39m] [RAFT] 21:58:54:674 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:54:779 Received ping
+[[32minfo[39m] [RAFT] 21:58:58:665 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:58:58:665 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:58:58:667 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:58:668 Received ping
+[[32minfo[39m] [RAFT] 21:58:58:668 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:58:58:779 Received ping
+[[32minfo[39m] [RAFT] 21:59:02:667 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:59:02:668 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:59:02:668 Received ping
+[[32minfo[39m] [RAFT] 21:59:02:669 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:59:02:669 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:59:02:775 Received ping
+[[32minfo[39m] [RAFT] 21:59:06:667 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:59:06:669 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:59:06:673 Received ping
+[[32minfo[39m] [RAFT] 21:59:06:676 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:59:06:678 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:59:06:779 Received ping
+[[32minfo[39m] [RAFT] 21:59:10:668 Ping to port 8000
+[[32minfo[39m] [RAFT] 21:59:10:670 Ping to port 8002
+[[32minfo[39m] [RAFT] 21:59:10:674 Received ping
+[[32minfo[39m] [RAFT] 21:59:10:676 Pingged to port 8000: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:59:10:677 Pingged to port 8002: {"message":"true"}
+[[32minfo[39m] [RAFT] 21:59:10:779 Received ping

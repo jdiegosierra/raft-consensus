@@ -34,7 +34,7 @@ export class LoggerService {
               winston.format.colorize(),
               myFormat
             ),
-            level: 'debug',
+            options: { flags: 'w' },
             filename: './logs/debug.log',
             handleExceptions: true,
             maxsize: 5242880, // 5MB
@@ -45,8 +45,7 @@ export class LoggerService {
               winston.format.label({ label: 'right meow!' }),
               winston.format.colorize(),
               myFormat
-            ),
-            level: 'silly'
+            )
           })
         ],
         exitOnError: false
@@ -58,6 +57,11 @@ export class LoggerService {
     const myFormat = winston.format.printf(({ level, message, label}) => {
       return `[${level}] [${label}] ${moment().format('HH:mm:ss:SSS')} ${message}`;
     });
+    this.logger.transports[0].format = winston.format.combine(
+      winston.format.label({ label: context }),
+      winston.format.colorize(),
+      myFormat
+    );
     this.logger.transports[1].format = winston.format.combine(
       winston.format.label({ label: context }),
       winston.format.colorize(),

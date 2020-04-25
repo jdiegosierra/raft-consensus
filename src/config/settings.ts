@@ -12,7 +12,7 @@ export default {
             {
               package: 'raft',
               protoPath: './src/transport-layers/rpc/raft.proto',
-              url: '0.0.0.0:' +  8000,
+              url: '172.24.0.2:' +  8000,
             }
         },
         {
@@ -21,7 +21,7 @@ export default {
             {
               package: 'raft',
               protoPath: './src/transport-layers/rpc/raft.proto',
-              url: '0.0.0.0:' + 8001,
+              url: '172.24.0.3:' + 8001,
             }
         },
         {
@@ -30,7 +30,7 @@ export default {
             {
               package: 'raft',
               protoPath: './src/transport-layers/rpc/raft.proto',
-              url: '0.0.0.0:' + 8002,
+              url: '172.24.0.4:' + 8002,
             }
         }
         ]

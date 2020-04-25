@@ -11,13 +11,15 @@ const connectionFactory = {
     const rpcClients: Array<[string, IRaftService]> = [];
     config.raft.RAFT_CLIENTS.forEach(options =>
     {
-      const client: ClientGrpc = new ClientGrpcProxy(options.options);
-      rpcClients.push([options.id, client.getService<IRaftService>('RaftService')]);
+      if (options.id !== process.env.GRPC_PORT_SERVER) {
+        const client: ClientGrpc = new ClientGrpcProxy(options.options);
+        const test = client.getService<IRaftService>('RaftService');
+        rpcClients.push([options.id, test]);
+      }
     });
     const loggerService = new LoggerService();
     loggerService.setContext('RAFT');
     const raft =  new RaftService(loggerService.logger, rpcClients);
-    raft.start();
     return raft;
   }
 };

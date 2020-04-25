@@ -7,8 +7,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=development
-      - GRPC_PORT=8000
-      - GRPC_CLIENT=8001
+      - GRPC_PORT_SERVER=8000
     volumes:
       - .:/usr/nodo
       - ./logs/test1.log:/usr/nodo/logs/debug.log
@@ -25,8 +24,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=development
-      - GRPC_PORT=8001
-      - GRPC_CLIENT=8002
+      - GRPC_PORT_SERVER=8001
     volumes:
       - .:/usr/nodo
       - ./logs/test2.log:/usr/nodo/logs/debug.log
@@ -43,8 +41,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=development
-      - GRPC_PORT=8002
-      - GRPC_CLIENT=8000
+      - GRPC_PORT_SERVER=8002
     volumes:
       - .:/usr/nodo
       - ./logs/test3.log:/usr/nodo/logs/debug.log
@@ -55,3 +52,10 @@ services:
         max-size: "200k"
         max-file: "10"
         labels: "prueba"
+    depends_on:
+      - nodo1
+      - nodo2
+networks:
+  default:
+    # Use a custom driver
+    driver: bridge

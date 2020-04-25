@@ -24,5 +24,6 @@ import { LoggerService } from './shared/logger/logger.service';
     loggerService.logger.info('API server made by J. Diego Sierra');
     loggerService.logger.info('Current environment: ' + (process.env.NODE_ENV || "development"));
     loggerService.logger.info(`Application is running on: ${config.server['PORT']}`);
+    loggerService.logger.info('RPC Server running on: ' + process.env.GRPC_PORT_SERVER);
   });
 })();
