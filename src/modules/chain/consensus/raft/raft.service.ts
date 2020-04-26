@@ -93,8 +93,7 @@ export class RaftService {
 
   constructor (private logger: winston.Logger, private _clients: Array<[string, IRaftService]>) {
     this._resetRaftState();
-    this._pingInterval = new Reseteable(this.pingRequest.bind(this), 2000);
-
+    this.pingRequest().then(() => this.logger.info('DONE'));
   }
 
   start(): void {
@@ -131,14 +130,19 @@ export class RaftService {
     return (Math.floor(Math.random() * config.raft.END_TIME_ELECTION) + 1)*1000;
   }
 
-  pingRequest(): void {
-    this._clients.forEach(client => {
-      this.logger.info('Ping to port ' + client[0])
-
-      client[1].ping({}).subscribe(
-        (value) => this.logger.info('Pingged to port ' + client[0] + ': ' + JSON.stringify(value)),
-        (error) => this.logger.error(error.message)
-      )
+  pingRequest(): Promise<boolean> {
+    return new Promise(async (resolve) => {
+      for (let index = 0; index < this._clients.length; index++){
+        this.logger.debug('Pinging ' + this._clients[index][0]);
+        try {
+          await this._clients[index][1].ping({}).toPromise();
+        } catch (e) {
+          this.logger.error(e.message);
+          await delay(1000);
+          index = -1;
+        }
+      }
+      resolve(true);
     });
   }
 

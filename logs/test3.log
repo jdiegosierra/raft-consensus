@@ -1,48 +1,5 @@
-[[32minfo[39m] [RAFT] 21:58:42:664 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:58:42:675 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:42:688 Received ping
-[[32minfo[39m] [RAFT] 21:58:42:697 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:42:699 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:42:788 Received ping
-[[32minfo[39m] [RAFT] 21:58:46:664 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:58:46:666 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:46:669 Received ping
-[[32minfo[39m] [RAFT] 21:58:46:676 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:46:678 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:46:775 Received ping
-[[32minfo[39m] [RAFT] 21:58:50:667 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:58:50:670 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:50:673 Received ping
-[[32minfo[39m] [RAFT] 21:58:50:675 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:50:677 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:50:779 Received ping
-[[32minfo[39m] [RAFT] 21:58:54:667 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:58:54:669 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:54:672 Received ping
-[[32minfo[39m] [RAFT] 21:58:54:674 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:54:675 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:54:779 Received ping
-[[32minfo[39m] [RAFT] 21:58:58:666 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:58:58:667 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:58:668 Received ping
-[[32minfo[39m] [RAFT] 21:58:58:669 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:58:669 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:58:779 Received ping
-[[32minfo[39m] [RAFT] 21:59:02:667 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:59:02:668 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:59:02:668 Received ping
-[[32minfo[39m] [RAFT] 21:59:02:669 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:02:669 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:02:775 Received ping
-[[32minfo[39m] [RAFT] 21:59:06:667 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:59:06:669 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:59:06:673 Received ping
-[[32minfo[39m] [RAFT] 21:59:06:676 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:06:678 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:06:779 Received ping
-[[32minfo[39m] [RAFT] 21:59:10:667 Ping to port 8000
-[[32minfo[39m] [RAFT] 21:59:10:669 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:59:10:673 Received ping
-[[32minfo[39m] [RAFT] 21:59:10:675 Pingged to port 8000: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:10:676 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:10:779 Received ping
+[[32minfo[39m] [RAFT] 11:37:38:962 Received ping
+[[32minfo[39m] [RAFT] 11:37:38:965 DONE
+[[32minfo[39m] [RAFT] 11:37:39:883 Received ping
+2minfo[39m] [App] 11:37:38:942 Application is running on: 3000
+[[32minfo[39m] [App] 11:37:38:943 RPC Server running on: 8002

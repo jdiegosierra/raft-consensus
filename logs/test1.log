@@ -1,48 +1,5 @@
-[[32minfo[39m] [RAFT] 21:58:42:682 Received ping
-[[32minfo[39m] [RAFT] 21:58:42:692 Received ping
-[[32minfo[39m] [RAFT] 21:58:42:774 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:42:782 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:58:42:795 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:42:798 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:46:664 Received ping
-[[32minfo[39m] [RAFT] 21:58:46:669 Received ping
-[[32minfo[39m] [RAFT] 21:58:46:774 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:46:775 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:58:46:776 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:46:776 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:50:669 Received ping
-[[32minfo[39m] [RAFT] 21:58:50:672 Received ping
-[[32minfo[39m] [RAFT] 21:58:50:774 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:50:776 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:58:50:781 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:50:782 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:54:667 Received ping
-[[32minfo[39m] [RAFT] 21:58:54:671 Received ping
-[[32minfo[39m] [RAFT] 21:58:54:775 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:54:776 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:58:54:781 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:54:782 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:58:666 Received ping
-[[32minfo[39m] [RAFT] 21:58:58:668 Received ping
-[[32minfo[39m] [RAFT] 21:58:58:775 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:58:58:776 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:58:58:781 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:58:58:782 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:02:668 Received ping
-[[32minfo[39m] [RAFT] 21:59:02:669 Received ping
-[[32minfo[39m] [RAFT] 21:59:02:774 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:59:02:775 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:59:02:776 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:02:776 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:06:672 Received ping
-[[32minfo[39m] [RAFT] 21:59:06:674 Received ping
-[[32minfo[39m] [RAFT] 21:59:06:775 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:59:06:776 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:59:06:781 Pingged to port 8001: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:06:782 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:10:671 Received ping
-[[32minfo[39m] [RAFT] 21:59:10:673 Received ping
-[[32minfo[39m] [RAFT] 21:59:10:775 Ping to port 8001
-[[32minfo[39m] [RAFT] 21:59:10:777 Ping to port 8002
-[[32minfo[39m] [RAFT] 21:59:10:781 Pingged to port 8002: {"message":"true"}
-[[32minfo[39m] [RAFT] 21:59:10:782 Pingged to port 8001: {"message":"true"}
+[[32minfo[39m] [RAFT] 11:37:38:957 Received ping
+[[32minfo[39m] [RAFT] 11:37:38:965 DONE
+[[32minfo[39m] [RAFT] 11:37:39:875 Received ping
+2minfo[39m] [App] 11:37:38:953 Application is running on: 3000
+[[32minfo[39m] [App] 11:37:38:953 RPC Server running on: 8000

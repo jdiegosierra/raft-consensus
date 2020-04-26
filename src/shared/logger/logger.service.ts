@@ -45,7 +45,8 @@ export class LoggerService {
               winston.format.label({ label: 'right meow!' }),
               winston.format.colorize(),
               myFormat
-            )
+            ),
+            level: 'debug'
           })
         ],
         exitOnError: false
