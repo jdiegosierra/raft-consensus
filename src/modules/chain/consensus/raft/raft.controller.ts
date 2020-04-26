@@ -3,8 +3,8 @@ import { Client, ClientGrpc, GrpcMethod } from '@nestjs/microservices';
 import { RaftService } from './raft.service';
 import { raftOptions } from '../../../../config/transportOptions';
 
-export interface RaftRequest {
-  message: [string, (string | Int8Array)];
+interface RaftRequest {
+  message: string;
 }
 
 export interface RaftResponse {

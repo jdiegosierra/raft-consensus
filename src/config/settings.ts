@@ -2,7 +2,7 @@ export default {
     raft: {
       START_TIME_ELECTION: 1,
       END_TIME_ELECTION: 3,
-      HEARTBEAT_INTERVAL: 1,
+      HEARTBEAT_INTERVAL: 2000,
       TOLERANCE: 0.1,
       RAFT_MIN_NODES: 3,
       RAFT_CLIENTS: [
@@ -12,7 +12,7 @@ export default {
             {
               package: 'raft',
               protoPath: './src/transport-layers/rpc/raft.proto',
-              url: '172.24.0.2:' +  8000,
+              url: '10.1.0.2:' +  8000,
             }
         },
         {
@@ -21,7 +21,7 @@ export default {
             {
               package: 'raft',
               protoPath: './src/transport-layers/rpc/raft.proto',
-              url: '172.24.0.3:' + 8001,
+              url: '10.1.0.3:' + 8001,
             }
         },
         {
@@ -30,7 +30,7 @@ export default {
             {
               package: 'raft',
               protoPath: './src/transport-layers/rpc/raft.proto',
-              url: '172.24.0.4:' + 8002,
+              url: '10.1.0.4:' + 8002,
             }
         }
         ]

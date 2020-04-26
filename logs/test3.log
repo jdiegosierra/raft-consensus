@@ -1,5 +1,3 @@
-[[32minfo[39m] [RAFT] 11:37:38:962 Received ping
-[[32minfo[39m] [RAFT] 11:37:38:965 DONE
-[[32minfo[39m] [RAFT] 11:37:39:883 Received ping
-2minfo[39m] [App] 11:37:38:942 Application is running on: 3000
-[[32minfo[39m] [App] 11:37:38:943 RPC Server running on: 8002
+[[31merror[39m] [RAFT] 16:31:02:902 14 UNAVAILABLE: failed to connect[[32minfo[39m] [App] 16:31:02:899 Current environment: development
+[[32minfo[39m] [App] 16:31:02:899 Application is running on: 3000
+[[32minfo[39m] [App] 16:31:02:899 RPC Server running on: 8002

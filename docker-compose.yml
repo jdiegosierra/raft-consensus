@@ -18,6 +18,9 @@ services:
         max-size: "200k"
         max-file: "10"
         labels: "prueba"
+    networks:
+      test:
+        ipv4_address: 10.1.0.2
   nodo2:
     build:
       context: .
@@ -35,6 +38,9 @@ services:
         max-size: "200k"
         max-file: "10"
         labels: "prueba"
+    networks:
+      test:
+        ipv4_address: 10.1.0.3
   nodo3:
     build:
       context: .
@@ -52,10 +58,13 @@ services:
         max-size: "200k"
         max-file: "10"
         labels: "prueba"
-    depends_on:
-      - nodo1
-      - nodo2
+    networks:
+      test:
+        ipv4_address: 10.1.0.4
 networks:
-  default:
-    # Use a custom driver
+  test:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24

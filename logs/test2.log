@@ -1,4 +1,18 @@
-[[31merror[39m] [RAFT] 11:37:38:870 14 UNAVAILABLE: failed to connect[[32minfo[39m] [[[32minfo[39m] [RAFT] 11:37:38:957 Received ping
-[[32minfo[39m] [RAFT] 11:37:38:961 Received ping
-[[32minfo[39m] [RAFT] 11:37:39:883 DONE
-:37:38:867 RPC Server running on: 8001
+[[31merror[39m] [RAFT] 16:31:02:950 14 UNAVAILABLE: failed to connect[[32minfo[39m] [[[32minfo[39m] [RAFT] 16:31:07:978 response es {"message":"true"}
+[[32minfo[39m] [RAFT] 16:31:07:988 response es {"message":"true"}
+[[32minfo[39m] [RAFT] 16:31:23:983 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:23:989 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:27:983 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:27:988 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:31:981 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:31:982 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:31:983 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:31:985 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:35:987 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:35:992 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:39:988 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:39:990 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:39:992 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:39:994 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:39:998 response es {"message":"false"}
+[[32minfo[39m] [RAFT] 16:31:40:001 response es {"message":"false"}

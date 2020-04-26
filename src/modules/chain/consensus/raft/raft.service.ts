@@ -29,7 +29,7 @@ class Reseteable implements Timer{
   setTimer(interval?: number): void {
     this.interval = interval ? interval : this.interval;
     clearTimeout(this._timer);
-    this._timer = setInterval(this.callback, this.interval*2, this.args);
+    this._timer = setInterval(this.callback, this.interval*4, this.args);
   }
 
   cancel(): void {
@@ -37,7 +37,7 @@ class Reseteable implements Timer{
   }
 }
 interface RaftRequest {
-  message: [string, (string | Int8Array)];
+  message: string;
 }
 export class IRaftService {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -89,22 +89,20 @@ export class RaftService {
   private _candidateTimer: Reseteable;
   private _electionFailedTimer: Reseteable;
   private _heartbeatInterval: Reseteable;
-  private _pingInterval: Reseteable;
 
   constructor (private logger: winston.Logger, private _clients: Array<[string, IRaftService]>) {
+    this._validatorId = process.env.GRPC_PORT_SERVER;
     this._resetRaftState();
-    this.pingRequest().then(() => this.logger.info('DONE'));
-  }
-
-  start(): void {
-    // this.pingRequest();
-    // this._state = ServiceState.ON;
-    // this._startStatus();
+    this.pingRequest().then(() => {
+      this._state = ServiceState.ON;
+      this._startStatus();
+    });
   }
 
   private _resetRaftState(): void {
     // console.log('_resetRaftState');
     // Sets the initial status to the service.
+    this.logger.debug('Resetting state');
     this._raftStatus = RaftStatus.FOLLOWER;
     this._state = ServiceState.OFF;
     this._votingTo = null;
@@ -147,7 +145,6 @@ export class RaftService {
   }
 
   ping(): boolean {
-    this.logger.info('Received ping');
     return true
   }
 
@@ -159,6 +156,7 @@ export class RaftService {
     // Starts the timers according to the current status.
     if (this._state === ServiceState.OFF)
       return;
+    this.logger.debug('Starting status ' + RaftStatus[this._raftStatus]);
     switch (+this._raftStatus) {
       case RaftStatus.FOLLOWER:
         // console.log("entra aqui 1");
@@ -180,15 +178,14 @@ export class RaftService {
 
   private _startFollowerStatus(): void {
     // console.log('_startFollowerStatus');
-    console.log(RaftService._getRandomElectionTimeout());
     this._candidateTimer = new Reseteable(this._setRaftStatus.bind(this), RaftService._getRandomElectionTimeout(), [RaftStatus.CANDIDATE]);
   }
 
-  private _startCandidateStatus(): void {
+  private async _startCandidateStatus(): Promise<void> {
     // console.log('_startCandidateStatus');
     this._votingTo = this._validatorId;
     this._electionFailedTimer = new Reseteable(this._setRaftStatus.bind(this), RaftService._getRandomElectionTimeout(), [RaftStatus.FOLLOWER]);
-    if (this._voteRequest())
+    if (await this._voteRequest())
       this._setRaftStatus(RaftStatus.LEADER);
     else
       this._setRaftStatus(RaftStatus.FOLLOWER);
@@ -206,6 +203,7 @@ export class RaftService {
   private _endStatus(): void {
     // console.log('_endStatus');
     // """Stops the timers according to the status."""
+    this.logger.debug('Finishing status ' + RaftStatus[this._raftStatus]);
     switch (this._raftStatus) {
       case RaftStatus.FOLLOWER:
         this._candidateTimer.cancel();
@@ -237,7 +235,7 @@ export class RaftService {
     this._startStatus();
   }
 
-  private _sendVoteRequest(message: RaftRequest, minN: number): boolean {
+  private _sendVoteRequest(message: RaftRequest, minN: number): Promise<boolean> {
     // """Sends a raft message [ConsensusLeaderRequest].
     //
     // Args:
@@ -248,23 +246,25 @@ export class RaftService {
     //   Returns:
     // Whether the request if successful or not.
     // """
-    let total = 0;
-    let result = false;
-    let response;
-    // this._networkModule.leaderRequest(message).subscribe(value => console.log(value));
-    this._clients.forEach(([id, client]) => {
-      if (client === null)
-        return;
-      if (this._validatorId === id)
-        return;
-      // TODO: Async
-      response = client.voteRequest(message).subscribe(
-        value => this.logger.info(JSON.stringify(value)));
-      total += 1 ? response : 0;
-      if (total >= minN)
-        result = true;
+    return new Promise(async (resolve) => {
+      let total = 1;
+      let result = false;
+      let response;
+      // this._networkModule.leaderRequest(message).subscribe(value => console.log(value));
+      for (let index = 0; index < this._clients.length; index++) {
+        try {
+          response = await this._clients[index][1].voteRequest(message).toPromise();
+          this.logger.info('response es ' + JSON.stringify(response));
+        } catch (e) {
+          this.logger.error(e);
+        }
+        total += (response.message == 'true') ? 1 : 0;
+        if (total >= minN)
+          result = true;
+      }
+      this.logger.debug('total es ' + total);
+      resolve(result);
     });
-    return result;
   }
 
   private _sendHeartbeat(): void {
@@ -291,48 +291,17 @@ export class RaftService {
     });
   }
 
-  private _voteRequest(): boolean {
+  private _voteRequest(): Promise<boolean> {
     // """Requests the vote to the rest of validator nodes to become
     // leader."""
     // const message = ConsensusLeaderRequest(ConsensusLeaderRequest.Type.VOTE_REQUEST);
-    const message: RaftRequest = {message: ['sender', process.env.GRPC_PORT]};
-    const minVotes = Math.floor(this._clients.length * config.raft.TOLERANCE);
-    this._sendVoteRequest(message, Math.max(minVotes, config.raft.RAFT_MIN_NODES));
+    return new Promise(async resolve => {
+      const message: RaftRequest = {message: JSON.stringify({sender: process.env.GRPC_PORT_SERVER})};
+      const minVotes = Math.floor(this._clients.length * config.raft.TOLERANCE);
+      resolve(await this._sendVoteRequest(message, Math.max(minVotes, config.raft.RAFT_MIN_NODES)));
+    })
 
-    return false
   }
-
-  static parseRequest(
-    message: string,
-    minN: number
-  ): boolean {
-    // """Sends a raft message [ConsensusLeaderRequest].
-    //
-    // Args:
-    //   message: Dict that includes action type and sender.
-    //   min_n: Minimum number of true responses to consider
-    // valid the request.
-    //
-    //   Returns:
-    // Whether the request if successful or not.
-    // """
-    const total = 0;
-    // let client = null;
-    // let response = null;
-    //
-    // this._validatorPeerHashes.forEach(
-    //   (publicKeyHash: number, validatorIndex: number) => {
-    //     if (this._validatorId === validatorIndex || publicKeyHash === null)
-    //       return;
-    //     client = this._networkModule.getPeerClient(publicKeyHash);
-    //     if (!client)
-    //       return;
-    //     response = client.consensusLeader(message);
-    //     total += response ? 1 : 0;
-    //   });
-    return total >= minN;
-  }
-
 
   handleVoteRequest(message: RaftRequest): boolean {
     // """Performs actions according to a received raft message.
@@ -345,18 +314,25 @@ export class RaftService {
     // request.
     // """
     // If is not running or is not validator
-    if (this._state != ServiceState.ON || this._validatorId === null)
+    this.logger.debug('Se ha recibido un VOTE REQUEWSWT');
+    if (this._state != ServiceState.ON) {
+      this.logger.debug('ENVIADNO FALSE 1')
       return false;
+    }
 
-    if (this._raftStatus === RaftStatus.CANDIDATE || this._votingTo != null)
+
+    if (this._raftStatus === RaftStatus.CANDIDATE || this._votingTo != null) {
+      this.logger.debug('ENVIADNO FALSE 2 raftstatus ' + RaftStatus[this._raftStatus] + ' votingto ' + this._votingTo);
       return false;
+    }
 
-    this._votingTo = message[0];
+    this._votingTo = JSON.parse(message.message).sender;
 
     if (this._raftStatus === RaftStatus.FOLLOWER)
       this._candidateTimer.cancel();
     else
       this._setRaftStatus(RaftStatus.FOLLOWER);
+    return true;
   }
 
   handleHeartbeat(): void {
@@ -370,8 +346,10 @@ export class RaftService {
     // request.
     // """
     // If is not running or is not validator
-    this.logger.info('Received heartbeat');
-    if (this._state != ServiceState.ON || this._validatorId === null)
-    this._candidateTimer.setTimer();
+    this.logger.debug('Received heartbeat');
+    this._validatorId = null;
+    if (this._state != ServiceState.ON)
+      this._candidateTimer.setTimer();
+
   }
 }
