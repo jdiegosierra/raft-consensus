@@ -1,5 +1,5 @@
 Arguments: 
-  /home/diego/.nvm/versions/node/v13.10.1/bin/node /usr/share/yarn/bin/yarn.js add grpc
+  /home/diego/.nvm/versions/node/v13.10.1/bin/node /usr/share/yarn/bin/yarn.js add base-58
 
 PATH: 
   PATH:/home/diego/.nvm/versions/node/v13.10.1/bin:/home/diego/.cargo/bin:/home/diego/.poetry/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/diego/.local/bin:/usr/local/go/bin:/home/diego/projects/go/bin:/home/diego/.dotfiles/git/bin/

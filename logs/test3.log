@@ -1,3 +1,199 @@
-[[31merror[39m] [RAFT] 16:31:02:902 14 UNAVAILABLE: failed to connect[[32minfo[39m] [App] 16:31:02:899 Current environment: development
-[[32minfo[39m] [App] 16:31:02:899 Application is running on: 3000
-[[32minfo[39m] [App] 16:31:02:899 RPC Server running on: 8002
+[[32minfo[39m] [App] 22:59:33:775 API server made by[[34mdebug[39m][[32minfo[39m] [App] 22:59:33:776 Current environment: development
+[[32minfo[39m] [App] 22:59:33:776 Application is run[[34mdebug[39m] [RAFT] 22:59:34:781 Pinging 8000
+[[34mdebug[39m] [RAFT] 22:59:34:785 Pinging 8001
+[[32minfo[39m] [RAFT] 22:59:34:791 Node connected!
+[[34mdebug[39m] [RAFT] 22:59:34:792 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 22:59:38:075 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 22:59:40:088 Received heartbeat
+[[34mdebug[39m] [RAFT] 22:59:46:073 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 22:59:48:083 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:00:087 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:00:089 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:00:091 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:00:00:099 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:00:101 Sending vote request to 8001
+[[34mdebug[39m] [RAFT] 23:00:00:106 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:00:107 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:00:108 Starting status FOLLOWER
+[[32minfo[39m] [RAFT] 23:00:00:111 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:00:112 total es 3
+[[34mdebug[39m] [RAFT] 23:00:00:113 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:00:114 Cant change to Leader if its Follower
+[[34mdebug[39m] [RAFT] 23:00:00:115 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:02:086 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:04:099 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:08:104 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:08:105 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:08:105 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:00:08:111 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:08:112 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:00:08:118 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:08:119 total es 3
+[[34mdebug[39m] [RAFT] 23:00:08:119 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:08:120 Starting status LEADER
+[[32minfo[39m] [RAFT] 23:00:10:123 se va a enviar un heartbeat a 8000
+[[32minfo[39m] [RAFT] 23:00:10:127 se va a enviar un heartbeat a 8001
+[[34mdebug[39m] [RAFT] 23:00:12:092 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:00:12:093 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:12:099 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:12:099 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:12:099 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:14:109 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:18:118 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:18:133 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:20:095 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:20:096 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:20:097 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:00:20:101 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:20:101 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:00:20:103 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:20:103 total es 3
+[[34mdebug[39m] [RAFT] 23:00:20:103 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:20:103 Starting status LEADER
+[[34mdebug[39m] [RAFT] 23:00:20:105 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:00:20:105 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:24:105 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:24:106 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:24:107 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:00:24:116 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:24:117 Sending vote request to 8001
+[[34mdebug[39m] [RAFT] 23:00:24:119 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:24:119 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:24:119 Starting status FOLLOWER
+[[32minfo[39m] [RAFT] 23:00:24:120 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:24:120 total es 3
+[[34mdebug[39m] [RAFT] 23:00:24:120 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:24:120 Cant change to Leader if its Follower
+[[34mdebug[39m] [RAFT] 23:00:24:120 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:24:121 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:28:115 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:30:126 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:32:098 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:32:099 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:36:103 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:36:104 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:36:105 Sending vote request to 8000
+[[34mdebug[39m] [RAFT] 23:00:36:107 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:36:108 Starting status FOLLOWER
+[[32minfo[39m] [RAFT] 23:00:36:110 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:36:110 Sending vote request to 8001
+[[34mdebug[39m] [RAFT] 23:00:36:111 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:36:111 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:36:111 Starting status FOLLOWER
+[[32minfo[39m] [RAFT] 23:00:36:112 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:36:112 total es 3
+[[34mdebug[39m] [RAFT] 23:00:36:112 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:36:112 Cant change to Leader if its Follower
+[[34mdebug[39m] [RAFT] 23:00:36:112 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:38:120 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:38:125 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:38:134 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:40:106 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:40:107 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:40:142 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:44:110 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:44:111 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:44:111 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:00:44:119 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:44:120 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:00:44:121 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:44:121 total es 3
+[[34mdebug[39m] [RAFT] 23:00:44:121 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:44:121 Starting status LEADER
+[[34mdebug[39m] [RAFT] 23:00:44:141 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:44:141 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:00:44:141 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:46:145 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:48:117 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:48:143 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:48:143 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:48:143 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:00:48:145 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:48:145 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:00:48:146 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:00:48:146 total es 3
+[[34mdebug[39m] [RAFT] 23:00:48:147 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:00:48:147 Starting status LEADER
+[[32minfo[39m] [RAFT] 23:00:50:148 se va a enviar un heartbeat a 8000
+[[32minfo[39m] [RAFT] 23:00:50:152 se va a enviar un heartbeat a 8001
+[[34mdebug[39m] [RAFT] 23:00:52:112 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:00:52:113 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:52:143 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:52:143 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:54:130 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:00:54:130 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:54:131 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:00:56:147 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:00:58:149 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:01:00:114 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:00:115 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:00:115 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:01:00:121 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:00:122 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:01:00:128 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:00:128 total es 3
+[[34mdebug[39m] [RAFT] 23:01:00:129 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:00:130 Starting status LEADER
+[[34mdebug[39m] [RAFT] 23:01:00:144 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:01:00:145 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:00:146 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:01:00:150 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:00:151 Sending vote request to 8001
+[[34mdebug[39m] [RAFT] 23:01:00:153 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:01:00:153 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:00:153 Starting status FOLLOWER
+[[32minfo[39m] [RAFT] 23:01:00:154 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:00:155 total es 3
+[[34mdebug[39m] [RAFT] 23:01:00:155 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:00:156 Cant change to Leader if its Follower
+[[34mdebug[39m] [RAFT] 23:01:00:156 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:02:158 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:01:04:116 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:04:116 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:04:117 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:01:04:117 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:04:117 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:04:146 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:04:147 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:06:126 Received heartbeat
+[[34mdebug[39m] [RAFT] 23:01:08:117 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:08:118 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:08:119 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:01:08:124 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:08:125 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:01:08:130 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:08:131 total es 3
+[[34mdebug[39m] [RAFT] 23:01:08:132 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:08:132 Starting status LEADER
+[[34mdebug[39m] [RAFT] 23:01:10:127 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:01:10:128 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:10:128 Sending vote request to 8000
+[[34mdebug[39m] [RAFT] 23:01:10:129 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:01:10:129 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:10:129 Starting status FOLLOWER
+[[32minfo[39m] [RAFT] 23:01:10:129 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:10:130 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:01:10:131 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:10:131 total es 3
+[[34mdebug[39m] [RAFT] 23:01:10:131 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:10:131 Cant change to Leader if its Follower
+[[34mdebug[39m] [RAFT] 23:01:10:132 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:14:132 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:14:132 Starting status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:14:133 Sending vote request to 8000
+[[32minfo[39m] [RAFT] 23:01:14:134 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:14:134 Sending vote request to 8001
+[[32minfo[39m] [RAFT] 23:01:14:136 response es {"message":"true"}
+[[34mdebug[39m] [RAFT] 23:01:14:136 total es 3
+[[34mdebug[39m] [RAFT] 23:01:14:136 Finishing status CANDIDATE
+[[34mdebug[39m] [RAFT] 23:01:14:136 Starting status LEADER
+[[32minfo[39m] [RAFT] 23:01:16:137 se va a enviar un heartbeat a 8000
+[[32minfo[39m] [RAFT] 23:01:16:141 se va a enviar un heartbeat a 8001
+[[34mdebug[39m] [RAFT] 23:01:18:129 Finishing status LEADER
+[[34mdebug[39m] [RAFT] 23:01:18:130 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:18:150 Se ha recibido un VOTE REQUEWSWT
+[[34mdebug[39m] [RAFT] 23:01:18:151 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:18:151 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:20:120 Finishing status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:20:121 Starting status FOLLOWER
+[[34mdebug[39m] [RAFT] 23:01:20:159 Received heartbeat

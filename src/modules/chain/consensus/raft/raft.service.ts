@@ -29,7 +29,7 @@ class Reseteable implements Timer{
   setTimer(interval?: number): void {
     this.interval = interval ? interval : this.interval;
     clearTimeout(this._timer);
-    this._timer = setInterval(this.callback, this.interval*4, this.args);
+    this._timer = setTimeout(this.callback, this.interval*4, this.args);
   }
 
   cancel(): void {
@@ -55,20 +55,11 @@ enum ServiceState {
   OFF,
   ON
 }
+
 enum RaftStatus {
   FOLLOWER,
   CANDIDATE,
   LEADER
-}
-
-enum ReqType {
-  VOTE_REQUEST,
-  HEARTBEAT
-}
-
-interface ConsensusLeaderMessage {
-  type: string,
-  body: string
 }
 
 function delay(ms: number) {
@@ -94,6 +85,7 @@ export class RaftService {
     this._validatorId = process.env.GRPC_PORT_SERVER;
     this._resetRaftState();
     this.pingRequest().then(() => {
+      this.logger.info('Node connected!');
       this._state = ServiceState.ON;
       this._startStatus();
     });
@@ -228,8 +220,13 @@ export class RaftService {
     //   status: New raft status to be established.
     // """
     this._endStatus();
-    if (this._raftStatus === RaftStatus.FOLLOWER && status === RaftStatus.LEADER)
+    if (this._raftStatus === RaftStatus.FOLLOWER && status === RaftStatus.LEADER) {
+      this.logger.debug('Cant change to Leader if its Follower');
       this._raftStatus = RaftStatus.FOLLOWER;
+    } else if (this._raftStatus === RaftStatus.LEADER && status === RaftStatus.LEADER){
+      this.logger.debug('this is unfair, yopu have to be Follower');
+      this._raftStatus = RaftStatus.FOLLOWER;
+    }
     else
       this._raftStatus = status;
     this._startStatus();
@@ -252,6 +249,7 @@ export class RaftService {
       let response;
       // this._networkModule.leaderRequest(message).subscribe(value => console.log(value));
       for (let index = 0; index < this._clients.length; index++) {
+        this.logger.debug('Sending vote request to ' + this._clients[index][0])
         try {
           response = await this._clients[index][1].voteRequest(message).toPromise();
           this.logger.info('response es ' + JSON.stringify(response));
@@ -267,7 +265,7 @@ export class RaftService {
     });
   }
 
-  private _sendHeartbeat(): void {
+  private async _sendHeartbeat(): Promise<void> {
     // """Sends a raft message [ConsensusLeaderRequest].
     //
     // Args:
@@ -279,16 +277,15 @@ export class RaftService {
     // Whether the request if successful or not.
     // """
     // this._networkModule.leaderRequest(message).subscribe(value => console.log(value));
-    this._clients.forEach(([id, client]) => {
-      if (client === null)
-        return;
-      if (this._validatorId === id)
-        return;
+    for (let index = 0; index < this._clients.length; index++) {
       // TODO: Async
-      this.logger.info("se va a enviar un heartbeat a " + (process.env.GRPC_CLIENT || 8000));
-      client.heartbeat({}).subscribe(
-        value => this.logger.info(JSON.stringify(value)));
-    });
+      this.logger.info("se va a enviar un heartbeat a " + this._clients[index][0]);
+      try {
+        await this._clients[index][1].heartbeat({}).toPromise();
+      } catch (e) {
+        this._setRaftStatus(RaftStatus.FOLLOWER);
+      }
+    };
   }
 
   private _voteRequest(): Promise<boolean> {
@@ -321,7 +318,7 @@ export class RaftService {
     }
 
 
-    if (this._raftStatus === RaftStatus.CANDIDATE || this._votingTo != null) {
+    if (this._raftStatus === RaftStatus.CANDIDATE) {
       this.logger.debug('ENVIADNO FALSE 2 raftstatus ' + RaftStatus[this._raftStatus] + ' votingto ' + this._votingTo);
       return false;
     }
@@ -348,8 +345,9 @@ export class RaftService {
     // If is not running or is not validator
     this.logger.debug('Received heartbeat');
     this._validatorId = null;
-    if (this._state != ServiceState.ON)
+    if (this._raftStatus == RaftStatus.FOLLOWER)
       this._candidateTimer.setTimer();
-
+    else
+      this._setRaftStatus(RaftStatus.FOLLOWER);
   }
 }

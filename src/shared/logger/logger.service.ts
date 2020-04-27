@@ -34,6 +34,7 @@ export class LoggerService {
               winston.format.colorize(),
               myFormat
             ),
+            level: 'debug',
             options: { flags: 'w' },
             filename: './logs/debug.log',
             handleExceptions: true,

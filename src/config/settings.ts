@@ -2,7 +2,7 @@ export default {
     raft: {
       START_TIME_ELECTION: 1,
       END_TIME_ELECTION: 3,
-      HEARTBEAT_INTERVAL: 2000,
+      HEARTBEAT_INTERVAL: 500,
       TOLERANCE: 0.1,
       RAFT_MIN_NODES: 3,
       RAFT_CLIENTS: [
